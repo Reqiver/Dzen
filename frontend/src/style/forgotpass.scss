@@ -1,0 +1,20 @@
+@import 'variables';
+
+
+.forgot-pass {
+    position: relative;
+    top: 50px;
+    right: 0;
+    margin: 0 auto;
+    width: 95%;
+    max-width: 730px;
+    min-width: 377px;
+    min-height: 377px;
+}
+.paper-plane {
+    text-align: center;
+    font-size: 2rem;
+    svg {
+        font-size: 5rem;
+    }
+}

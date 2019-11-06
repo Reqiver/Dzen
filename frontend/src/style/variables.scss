@@ -1,0 +1,39 @@
+$green-lite:#50D5B7;
+$green-hard:#067D68;
+$green:#456445;
+$white:#f6f4f4;
+$black:#160e0e;
+$dark-gray:#333;
+
+$fs-h1:3.5rem;
+$fs-h2:2rem;
+$fs-h4:1.5rem;
+$fs-span:1rem;
+$fs-p:1rem;
+
+$colorBg: #222a30;
+$colorOutline: $white;
+$colorOutlineFade: #33333300;
+
+$widthMouse: 35px;
+$heightMouse: 60px;
+$borderMouse: 6px;
+
+$posMouse: 4px;
+
+$sizeTrackball: 8px;
+$posTrackball: 15px;
+$shrinkTrackball: 0.4;
+
+$animDuration: 7s;
+
+@mixin bgGradient {
+  background:
+    $colorOutlineFade
+    linear-gradient(
+      transparent 0%,
+      transparent 50%,
+      $colorOutline 50%,
+      $colorOutline 100%
+    );
+}

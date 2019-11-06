@@ -1,0 +1,116 @@
+@import 'variables';
+@import 'keyframes';
+
+.user_options-forms .user_forms-signup {
+  position: absolute;
+  top: 70px;
+  left: 40px;
+  width: calc(100% - 80px);
+  opacity: 0;
+  visibility: hidden;
+
+}
+.user_options-forms .user_forms-signup .forms_buttons {
+  justify-content: flex-end;
+}
+.user_options-forms .user_forms-signup {
+  opacity: 1;
+  visibility: visible;
+}
+.user_options-forms .user_forms-signup {
+  transition: opacity 0.4s ease-in-out, visibility 0.4s ease-in-out;
+}
+.signup {
+    position: relative;
+    top: 50px;
+    right: 0;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 730px;
+    min-width: 377px;
+    min-height: 420px;
+    background-color: #fff;
+    border-radius: 3px;
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    min-height: 550px;
+}
+.privacy-policy {
+    margin: 25px 0 0 5px;
+}
+.check {
+  cursor: pointer;
+  position: relative;
+  margin: auto;
+  width: 18px;
+  height: 18px;
+  -webkit-tap-highlight-color: transparent;
+  transform: translate3d(0, 0, 0);
+}
+
+.check svg {
+  position: relative;
+  z-index: 1;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: $dark-gray;
+  stroke-width: 1.5;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.2s ease;
+}
+.check svg path {
+  stroke-dasharray: 60;
+  stroke-dashoffset: 0;
+}
+.check svg polyline {
+  stroke-dasharray: 22;
+  stroke-dashoffset: 66;
+}
+
+.check:hover svg {
+  stroke: $green-lite;
+}
+#cbx-privacy-policy:checked + .check svg {
+  stroke: $green-lite;
+}
+#cbx-privacy-policy:checked + .check svg path {
+  stroke-dashoffset: 60;
+  transition: all 0.3s linear;
+}
+#cbx-privacy-policy:checked + .check svg polyline {
+  stroke-dashoffset: 42;
+  transition: all 0.2s linear;
+  transition-delay: 0.15s;
+}
+.cbx {
+    display: inline-block;
+    margin-right: 15px;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: -2px;
+}
+.i-accept {
+    color: $dark-gray;
+
+}
+.signup-soc {
+    i{
+        margin-left: 25px;
+        font-size: 1.75rem;
+        color: #1778f2;
+    }
+    img {
+        height: 1.75rem;
+        margin-bottom: 11px;
+    }
+}
+.soc-or-signup {
+    display: flex;
+    justify-content: space-between;
+    padding: 25px 0;
+    .signup-btn {
+        margin-top: 0;
+    }
+}

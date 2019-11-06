@@ -1,0 +1,39 @@
+version: '3'
+services:
+
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    environment:
+       MYSQL_ROOT_PASSWORD: 'root_password'
+       MYSQL_DATABASE: 'Dzen'
+       MYSQL_USER: 'root'
+       MYSQL_PASSWORD: 'root_password'
+    command:
+      - "--character-set-server=utf8mb4"
+      - "--collation-server=utf8mb4_unicode_ci"
+    ports:
+       - '3306:3306'
+
+  redis:
+    image: redis:latest
+    ports:
+      - '6379:6379'
+
+  front:
+    build: ./frontend
+    volumes:
+      - ./frontend:/home/node/frontend
+    ports:
+      - '3001:3000'
+    command: npm start
+
+  back:
+    build: ./backend
+    ports:
+       - '8000:8000'
+    volumes:
+       - ./backend:/backend
+    depends_on:
+       - mariadb
+    command: gunicorn -b 0.0.0.0:8000 myproject.wsgi:application

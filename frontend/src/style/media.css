@@ -1,0 +1,97 @@
+@media screen and (max-width: 980px) {
+    .footer .soc {
+        font-size: 40px;
+    }
+    .footer .soc li{
+        margin: 0 20px;
+    }
+    .course-cover-photo {
+        max-width: 100%;
+        max-height: 400px;
+    }
+
+    .event-cover-photo {
+        max-width: 100%;
+        height: auto;
+    }
+}
+@media screen and (max-width: 767px) {
+    .home-about div,
+    .home-course {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .footer {
+        height: auto;
+    }
+    .footer span {
+        bottom: 0;
+    }
+    .cd-info-block i {
+        width: 100%;
+        text-align: center;
+    }
+
+
+}
+
+@media screen and (max-width: 576px) {
+    .home-last-block img{
+        display: none;
+    }
+    .home-last-block .header-block{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .star {
+        top: 0;
+        left: 15px;
+    }
+    .home-rate .rate-num {
+        display: none;
+    }
+    .home-rate {
+        width: 100%;
+        top: 0;
+        flex-wrap: nowrap;
+    }
+    .tooltip-pass {
+         visibility: hidden;
+     }
+     .footer-nav a {
+         margin-right: 15px;
+     }
+     .trainer-page h1 {
+         position: relative;
+         top: -80px;
+         margin-left: 30px;
+     }
+    .trainer-page .status-offline{
+        position: absolute;
+    }
+    .course-det-header{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .course-detail-status {
+        position: absolute;
+        top: 35px;
+        right: 0;
+    }
+    .user-info {
+        margin-left: 0;
+    }
+    .event-and-courses {
+        left: 0;
+        text-align: center;
+    }
+    .event-and-courses{
+        width: 100%;
+    }
+    .input-for-password {
+        min-width: 345px;
+    }
+
+}
