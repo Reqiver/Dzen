@@ -33,7 +33,7 @@ class Migration(migrations.Migration):
                 ('password', models.CharField(max_length=80)),
                 ('email', models.EmailField(max_length=254, unique=True)),
                 ('i_like', models.TextField(blank=True, default='')),
-                ('birth_date', models.IntegerField()),
+                ('birth_date', models.IntegerField(blank=True, default=0)),
                 ('phone_number', models.CharField(blank=True, default='', max_length=13)),
                 ('avatar_url', models.CharField(blank=True, default='', max_length=255)),
                 ('is_active', models.BooleanField(default=False, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')),

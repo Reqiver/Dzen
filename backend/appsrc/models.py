@@ -37,7 +37,7 @@ class DzenUser(AbstractUser):
     password = models.CharField(max_length=80)
     email = models.EmailField(unique=True)
     i_like = models.TextField(blank=True, default=EMPTY_STRING)
-    birth_date = models.IntegerField(blank=False)
+    birth_date = models.IntegerField(blank=True, default=0)
     phone_number = models.CharField(max_length=13, blank=True, default=EMPTY_STRING)
     avatar_url = models.CharField(max_length=255, blank=True, default=EMPTY_STRING)
     is_active = models.BooleanField(default=False, help_text='Designates whether this user should be treated as active. Unselect this instead of deleting accounts.', verbose_name='active')
@@ -68,6 +68,9 @@ class Books(models.Model):
     cost = models.IntegerField(default=DEFAULT_COST)
     genre = models.ForeignKey(Genres, default=DEFAULT_CATEGORIES_ID, on_delete=models.SET_DEFAULT)
     cover_url = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.bookname
 
 class Events(models.Model):
     genre = models.ForeignKey(Genres, on_delete=models.SET_DEFAULT, default=DEFAULT_CATEGORIES_ID)
