@@ -4,6 +4,7 @@ import LoadingOverlay from 'react-loading-overlay';
 
 import HomeHeader from '../Components/HomeHeader';
 import HomeBook from '../Components/HomeBook';
+import Chat from '../Components/Chat';
 import Load from '../Components/spiner';
 
 
@@ -26,6 +27,7 @@ export default class Home extends React.Component{
               >
                 <HomeHeader />
                 <HomeBook />
+                <Chat />
             </LoadingOverlay>
 
             </>

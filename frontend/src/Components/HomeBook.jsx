@@ -6,13 +6,14 @@ import { isAuthenticated, defaultPhoto } from '../utils';
 import SideBar from './SideBar';
 import { API } from '../api/axiosConf'
 
-export default class Header extends React.Component {
+export default class HomeBook extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
             redirect: false,
-            booksList: [],
+            booksListPop: [],
+            booksListNew: [],
         };
     }
 
@@ -20,7 +21,8 @@ export default class Header extends React.Component {
         let path = 'api/books/top'
         let response = await API.get(path);
         this.setState({
-                booksList: response.data,
+                booksListPop: response.data.popular,
+                booksListNew: response.data.newest,
             });
     }
 
@@ -57,7 +59,7 @@ export default class Header extends React.Component {
         return (
             <section className="home-books">
                 <div className="container-fluid">
-                    <Row className="popular-book-header">
+                    <Row className="book-header popularbooks">
                         <Col className="d-flex align-items-center">
                             <h2>Most Popular Book</h2>
                         </Col>
@@ -75,7 +77,27 @@ export default class Header extends React.Component {
                         </Col>
                     </Row>
                     <Row>
-                        {this.state.booksList.map( book => this.renderBooks(book) )}
+                        {this.state.booksListPop.map( book => this.renderBooks(book) )}
+                    </Row>
+                    <Row className="book-header newest-books">
+                        <Col className="d-flex align-items-center">
+                            <h2>Newest Books</h2>
+                        </Col>
+                        <Col className="d-flex justify-content-end align-items-center">
+                            <Link to="/courses/search">
+                                <div className="more-courses-events">
+                                    <button className="learn-more">
+                                        <div className="circle">
+                                        <span className="icon arrow"></span>
+                                        </div>
+                                        <p className="button-text">More...</p>
+                                    </button>
+                                </div>
+                            </Link>
+                        </Col>
+                    </Row>
+                    <Row>
+                        {this.state.booksListNew.map( book => this.renderBooks(book) )}
                     </Row>
                 </div>
             </section>

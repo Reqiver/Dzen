@@ -107,7 +107,7 @@ def insertData(apps, schema_editor):
     Book = apps.get_model('appsrc', 'Books')
     for index, book in enumerate(books_ingo):
         Book.objects.create(id=(index+1), author=book['author'], bookname=book['name'], description= book['description'],
-            date=1570800600, cover_url=book['cover_url'], genre_id = 1, status = "In Stock", date_publ = book['date'],
+            date=1570800600+index, cover_url=book['cover_url'], genre_id = 1, status = "In Stock", date_publ = book['date'],
             cost = 10, languge = book['languge'])
 
 

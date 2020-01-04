@@ -11,7 +11,7 @@ from ..models import Books, DzenUser
 from ..serializers.books_serializer import TopBooksSerializator
 
 
-NUMBER_OF_TOP = 12
+NUMBER_OF_TOP = 6
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 class TopBooks(APIView):
@@ -22,6 +22,10 @@ class TopBooks(APIView):
     @method_decorator(cache_page(CACHE_TTL), name='top_books')
     def get(self, request):
         """First check request data in cache, then pull data from db"""
-        books = Books.objects.order_by('-rate')[:NUMBER_OF_TOP]
-        serializer = TopBooksSerializator(books, many=True)
-        return Response(serializer.data)
+        popular_books = Books.objects.order_by('-rate')[:NUMBER_OF_TOP]
+        newest_books = Books.objects.order_by('-date')[:NUMBER_OF_TOP]
+        popular = TopBooksSerializator(popular_books, many=True)
+        newest = TopBooksSerializator(newest_books, many=True)
+        serializer_list = {"popular": popular.data,
+                      "newest": newest.data}
+        return Response(serializer_list)
