@@ -96,3 +96,9 @@ class EventsComments(models.Model):
     event = models.ForeignKey(Events, on_delete=models.CASCADE)
     date = models.DateTimeField(auto_now_add=True)
     comment = models.TextField(blank=True, null=True)
+
+class ChatMessage(models.Model):
+    author = models.ForeignKey(DzenUser, on_delete=models.CASCADE)
+    room = models.ForeignKey(ChatRoom, on_delete=models.CASCADE, default=DEFAULT_STATUS_ID)
+    date = models.DateTimeField(auto_now_add=True)
+    message = models.TextField()

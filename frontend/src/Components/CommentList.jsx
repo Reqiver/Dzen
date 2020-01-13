@@ -7,6 +7,7 @@ import { toast } from 'react-toastify';
 import { API } from '../api/axiosConf';
 import Comment from "./Comment";
 import { defaultPhoto } from '../utils';
+import WebSocketInstance from '../api/websocket'
 
 
 const override = css`
@@ -21,8 +22,50 @@ export class CommentList extends React.Component {
 
     this.state = {
         visible: 40,
+
     };
+    this.waitForSocketConnection(() => {
+        WebSocketInstance.addCallbaks(
+            this.setMessages.bind(this),
+            this.addMessage.bind(this))
+        WebSocketInstance.fetchMessages(this.props.currentUser)
+    })
   }
+
+  waitForSocketConnection(callback){
+      const component = this
+      setTimeout(
+          function() {
+              if (WebSocketInstance.state() === 1) {
+                  console.log('connection secure');
+                  callback()
+                  return
+              } else {
+                  console.log('waiting for connection');
+                  component.waitForSocketConnection(callback);
+              }
+          }, 100);
+  }
+
+  setMessages(messages) {
+      this.setState({
+          messages: messages.reverse()
+      })
+  }
+  addMessages(message) {
+      this.setState({
+          messages: [...this.state.messages, message]
+      })
+  }
+  componentDidMount (){
+      WebSocketInstance.connect();
+  }
+
+
+
+
+
+
   loadMore = () => {
       this.setState((prev) => {
         return {visible: prev.visible + 40};
@@ -121,6 +164,8 @@ export class CommentForm extends React.Component {
     return this.state.error ? (toast.error(this.state.error)) : null;
   }
 
+
+
   render() {
       let defimg = "/media/avatar.png";
       let coverimg = defaultPhoto(defimg, localStorage.getItem("avatar_url"));
@@ -141,7 +186,7 @@ export class CommentForm extends React.Component {
               rows="2"
             />
           </div>
-          
+
         </form>
       </>
     );
