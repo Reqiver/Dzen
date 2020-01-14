@@ -9,7 +9,7 @@ from appsrc.models import Books as Book
 
 admin.site.register(User)
 admin.site.register(Role)
-#admin.site.register(Book)
+# admin.site.register(Book)
 
 class BookAdmin(admin.ModelAdmin):
     """docstring for BookAdmin."""

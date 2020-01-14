@@ -3,7 +3,7 @@ from django.urls import include, path
 from .views.user_auth import (UserLogin, UserLogout, UserRegistration,
                               UserSocialLogin, UserSocialRegistration)
 from .views.books import TopBooks
-from .views.chat import index, room
+
 
 urlpatterns = [
     path('books/top', TopBooks.as_view(), name='top-books'),
@@ -12,6 +12,4 @@ urlpatterns = [
     path('user/logout', UserLogout.as_view(), name='logout'),
     path('user/social/login', UserSocialLogin.as_view(), name='social_login'),
     path('user/social/register', UserSocialRegistration.as_view(), name='social_register'),
-    path('chat', index, name='index'),
-    path('chat/<str:room_name>/', room, name='room'),
 ]
